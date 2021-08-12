@@ -34,5 +34,7 @@ button.addEventListener("click", () => {
         p1score = 0
         winText.style.fontSize = "100px";
 
+    } else {
+        winText.style.fontSize = "150%";
     }
 })
