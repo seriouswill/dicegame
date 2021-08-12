@@ -32,6 +32,7 @@ button.addEventListener("click", () => {
     if (p1score >= 21) {
         winText.innerHTML = "You win!"
         p1score = 0
+        winText.style.fontSize = "100px";
 
     }
 })
