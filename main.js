@@ -110,4 +110,5 @@ reset.addEventListener("click", () => {
     score2.innerHTML = 0
     img2.src = "./images/dice1.png"
     dice1.src = "./images/dice1.png"
+    winText.innerHTML = "Try to score over 21!"
 })
