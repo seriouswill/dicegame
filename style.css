@@ -4,13 +4,27 @@ body {
   background-color: aquamarine;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  transition: background 1s;
 }
 h1 {
   font-size: 120px;
   font-family: "Palette Mosaic", cursive;
+  margin: 0;
+}
+h1,
+h2 {
+  font-weight: 400;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  transition: color 1s;
 }
 p {
   font-size: 30px;
+  margin: 0;
+  font-weight: 400;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  transition: color 1s;
 }
 
 #score {
