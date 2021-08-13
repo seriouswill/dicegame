@@ -1,9 +1,11 @@
 const button = document.getElementById("roll")
+const reset = document.getElementById("reset")
 const dice1 = document.getElementById("dice1")
 const winText = document.getElementById("winText")
 const score = document.getElementById("score1")
 const oneplayer = document.getElementById("oneplayer")
 const twoplayer = document.getElementById("twoplayer")
+
 let p1score = 0
 let p2score = 0
 
@@ -32,6 +34,7 @@ oneplayer.addEventListener("click", () => {
     document.getElementById("diceBox").removeChild(img2);
     document.getElementById("scoreBox").removeChild(player2p)
     document.getElementById("scoreBox").removeChild(score2)
+
 })
 
 
@@ -43,11 +46,11 @@ button.addEventListener("click", () => {
     let imgChoice2 = "./images/dice" + y + ".png"
     dice1.src = imgChoice;
     img2.src = imgChoice2;
-    if (x == 1) {
-        winText.innerHTML = "Player ones loses!"
-    } else {
-        winText.innerHTML = "Try and score over 21 to win!"
-    }
+    // if (x == 1) {
+    //     winText.innerHTML = "Player ones loses!"
+    // } else {
+    //     winText.innerHTML = "Try and score over 21 to win!"
+    // }
     // scoring
     if (x != 1) {
         
@@ -63,11 +66,27 @@ button.addEventListener("click", () => {
         p2score += y
         score2.innerText = p2score
     }
+    // losing
+    if (x == 1) {
+        winText.innerHTML = "Player one loses"
+        p1score = 0
+        
+    }
+    if (y == 1) {
+        winText.innerHTML = "Player two loses"
+        p2score = 0
+    }
     // winning
-
+    if (p2score >= 21 && p1score >= 21) {
+        winText.innerHTML = "It's a draw!!"
+        p1score = 0
+        p2score = 0
+        winText.style.fontSize = "100px";
+    }
     if (p1score >= 21) {
         winText.innerHTML = "Player One Wins!"
         p1score = 0
+        p2score = 0
         winText.style.fontSize = "100px";
 
     } else {
@@ -77,10 +96,18 @@ button.addEventListener("click", () => {
     if (p2score >= 21) {
         winText.innerHTML = "Player Two Wins!"
         p2score = 0
+        p1score = 0
         winText.style.fontSize = "100px";
 
     } else {
         winText.style.fontSize = "150%";
     }
     
+})
+
+reset.addEventListener("click", () => {
+    score.innerHTML = 0
+    score2.innerHTML = 0
+    img2.src = "./images/dice1.png"
+    dice1.src = "./images/dice1.png"
 })
