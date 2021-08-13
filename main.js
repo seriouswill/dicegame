@@ -5,7 +5,9 @@ const winText = document.getElementById("winText")
 const score = document.getElementById("score1")
 const oneplayer = document.getElementById("oneplayer")
 const twoplayer = document.getElementById("twoplayer")
-
+const diceSound = new Audio("/sounds/diceRoll.wav")
+const wooHoo = new Audio("/sounds/woo-hoo.wav")
+const draw = new Audio("/sounds/draw.mp3")
 let p1score = 0
 let p2score = 0
 
@@ -41,6 +43,7 @@ oneplayer.addEventListener("click", () => {
 button.addEventListener("click", () => {
     const x = Math.floor(Math.random() * 6 + 1)
     let imgChoice = "./images/dice" + x + ".png"
+    diceSound.play()
     //2nd dice
     const y = Math.floor(Math.random() * 6 + 1)
     let imgChoice2 = "./images/dice" + y + ".png"
@@ -52,6 +55,7 @@ button.addEventListener("click", () => {
     //     winText.innerHTML = "Try and score over 21 to win!"
     // }
     // scoring
+    winText.innerHTML = "Try to score over 21!"
     if (x != 1) {
         
         p1score += x
@@ -75,16 +79,19 @@ button.addEventListener("click", () => {
     if (y == 1) {
         winText.innerHTML = "Player two loses"
         p2score = 0
+
     }
     // winning
     if (p2score >= 21 && p1score >= 21) {
         winText.innerHTML = "It's a draw!!"
+        draw.play();
         p1score = 0
         p2score = 0
         winText.style.fontSize = "100px";
     }
     if (p1score >= 21) {
         winText.innerHTML = "Player One Wins!"
+        wooHoo.play();
         p1score = 0
         p2score = 0
         winText.style.fontSize = "100px";
@@ -95,6 +102,7 @@ button.addEventListener("click", () => {
 
     if (p2score >= 21) {
         winText.innerHTML = "Player Two Wins!"
+        wooHoo.play();
         p2score = 0
         p1score = 0
         winText.style.fontSize = "100px";
@@ -111,4 +119,5 @@ reset.addEventListener("click", () => {
     img2.src = "./images/dice1.png"
     dice1.src = "./images/dice1.png"
     winText.innerHTML = "Try to score over 21!"
+    winText.style.fontSize = "150%";
 })
